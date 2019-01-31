@@ -75,14 +75,14 @@ if __name__ == '__main__':
 
     through_origin = 'y' in input("do you want the line to go through the origin? ")
 
-    if through_origin:
+    if not through_origin:
         inputs = np.hstack((inputs_, [[1]] * len(inputs_)))
         # add a constant one which will allow us to change
         # the intersection with the y axis.
     else:
         inputs = inputs_
     
-    ai = LinearEquationNeuralNetwork(2 if through_origin else 1)
+    ai = LinearEquationNeuralNetwork(1 if through_origin else 1)
 
     ai.train(inputs, outputs, 1000000)
 
